@@ -72,6 +72,33 @@ class LeetCode {
         return n <= 0;
     }
 
+    // Reverse vowels
+    public static String vowelsStr(String s) {
+        char chars[] = s.toCharArray();
+        int left = 0;
+        int right = chars.length - 1;
+
+        while (left < right) {
+            while (left < right && !isVowel(chars[left])) {
+                left++;
+            }
+            while (left < right && !isVowel(chars[right])) {
+                right--;
+            }
+            char temp = chars[left];
+            chars[left] = chars[right];
+            chars[right] = temp;
+
+            left++;
+            right--;
+        }
+        return new String(chars);
+    }
+
+    public static boolean isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'U';
+    }
+
     public static void main(String args[]) {
         String str1 = "ABC", str2 = "MNC";
         String str3 = "ABCABC", str4 = "ABC";
@@ -84,5 +111,8 @@ class LeetCode {
         int arr1[] = {1, 0, 0, 0, 1, 0, 0, 0};
         boolean res2 = flowerBed(arr1, 2);
         System.out.print(res2);
+        System.out.println();
+        String s = "IceCreAm";
+        System.out.println(vowelsStr(s));
     }
 }
