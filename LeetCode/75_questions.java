@@ -109,7 +109,26 @@ class LeetCode {
         return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'U';
     }
 
+    // array product except itself
+    public static int[] arrPro(int nums[]) {
+        int n = nums.length;
+        int output[] = new int[n];
+
+        output[0] = 1;
+        // prefix
+        for (int i = 1; i < n; i++) {
+            output[i] = output[i - 1] * nums[i - 1];
+        }
+        int suffix = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            output[i] = output[i] * suffix;
+            suffix *= nums[i];
+        }
+        return output;
+    }
+
     public static void main(String args[]) {
+
         String str1 = "ABC", str2 = "MNC";
         String str3 = "ABCABC", str4 = "ABC";
         System.out.println(strAlt(str1, str2));
@@ -127,6 +146,10 @@ class LeetCode {
         System.out.println();
         String wrd = "i will be a software engineer at Google";
         System.out.println(revserseWrd(wrd));
+        System.out.println();
+        int arrp[] = {1, 2, 3, 4};
+
+        System.out.print(arrPro(arrp));
 
     }
 }
