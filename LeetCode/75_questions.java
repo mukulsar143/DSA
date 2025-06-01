@@ -95,6 +95,16 @@ class LeetCode {
         return new String(chars);
     }
 
+    // reverse word in a String
+    public static String revserseWrd(String s) {
+        String words[] = s.trim().split("\\s+");
+        String newStr = "";
+        for (int i = words.length - 1; i > 0; i--) {
+            newStr += words[i] + " ";
+        }
+        return newStr + words[0];
+    }
+
     public static boolean isVowel(char c) {
         return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'U';
     }
@@ -114,5 +124,9 @@ class LeetCode {
         System.out.println();
         String s = "IceCreAm";
         System.out.println(vowelsStr(s));
+        System.out.println();
+        String wrd = "i will be a software engineer at Google";
+        System.out.println(revserseWrd(wrd));
+
     }
 }
