@@ -1,4 +1,6 @@
 
+import java.util.*;
+
 class LeetCode {
 
     // Merge String Lternatively
@@ -36,10 +38,51 @@ class LeetCode {
         return str1.substring(0, lengcd);
     }
 
+    // Kids With n candies
+    public static List<Boolean> candies(int candies[], int extraCan) {
+        int maxCan = -1;
+        List<Boolean> res = new ArrayList<>();
+        for (int candy : candies) {
+            if (candy > maxCan) {
+                maxCan = candy;
+            }
+        }
+        for (int candy : candies) {
+            if (candy + extraCan >= maxCan) {
+                res.add(true);
+            } else {
+                res.add(false);
+            }
+        }
+        return res;
+    }
+
+    // can place flowrerbed
+    public static boolean flowerBed(int flowerbed[], int n) {
+        int len = flowerbed.length;
+
+        for (int i = 0; i < len; i++) {
+            boolean emptyleft = (i == 0) || (flowerbed[i - 1] == 0);
+            boolean emptyright = (i == len - 1) || (flowerbed[i + 1] == 0);
+            if (emptyleft && emptyright && flowerbed[i] == 0) {
+                flowerbed[i] = n;
+                n--;
+            }
+        }
+        return n <= 0;
+    }
+
     public static void main(String args[]) {
         String str1 = "ABC", str2 = "MNC";
-        strAlt(str1, str2);
-        gcdString(str1, str2);
-
+        String str3 = "ABCABC", str4 = "ABC";
+        System.out.println(strAlt(str1, str2));
+        System.out.println(gcdString(str3, str4));
+        System.out.println();
+        int arr[] = {2, 4, 5, 9, 7};
+        List<Boolean> res = candies(arr, 3);
+        System.out.println(res);
+        int arr1[] = {1, 0, 0, 0, 1, 0, 0, 0};
+        boolean res2 = flowerBed(arr1, 2);
+        System.out.print(res2);
     }
 }
