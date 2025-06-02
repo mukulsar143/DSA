@@ -179,3 +179,148 @@ class Revision {
     }
 
 }
+
+
+// LeetCode practice
+
+import java.util.*;
+
+class LeetCode{
+    // array of product except itself
+    public static int[] arrPro(int nums[]){
+        int n = nums.length;
+        int output[] = new int[n];
+        
+        output[0] = 1;
+        for(int i = 1; i< n; i++){
+            output[i] = output[i-1] * nums[i-1];
+        }
+        int suffix = 1;
+        for(int i = n-1; i>=0; i--){
+            output[i] = suffix * output[i];
+            suffix *= nums[i];
+        }
+        return output;
+    }
+    
+    // reverse word in a String
+    public static String reverseWord(String s){
+        String word[] = s.trim().split("\\s+");
+        String nStr = "";
+        
+        for(int i = word.length - 1; i>=1; i--){
+            nStr += word[i] + " ";
+        }
+        return nStr+ word[0];
+    }
+    
+    // reverse vowels in a String
+    public static String strvowel(String s){
+        char chars[] = s.toCharArray();
+        int left = 0;
+        int right = chars.length - 1;
+        while(left< right){
+            while(left <right && !isVowel(chars[left])){
+                left++;
+            }
+            while(left<right && !isVowel(chars[right])){
+             right--;   
+            }
+            char temp = chars[left];
+            chars[left] = chars[right];
+            chars[right] = temp;
+            
+            left++;
+            right--;
+        }
+        return new String(chars);
+    }
+    public static boolean isVowel(char c){
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'U';
+    }
+    
+    // can flowerbed place
+    public static boolean flowerBed(int flower[], int n){
+        int len = flower.length;
+        for(int i = 0; i<len;i++){
+            boolean leftEmpty = (i == 0) || (flower[i-1] == 0);
+            boolean rightEmpty = (i == len-1) || (flower[i+1] == 0);
+            if(leftEmpty && rightEmpty && flower[i] == 0){
+                flower[i] = n;
+                n--;
+            }
+        }
+        return n <= 0;
+    }
+    
+    // kids with n canies
+    public static List<Boolean> Ecandies(int candies[], int extraCan){
+        List<Boolean> res = new ArrayList<>();
+        int max = -1;
+        for(int candy:candies){
+            if(candy > max){
+                max = candy;
+            }
+        }
+        for(int candy: candies){
+            if(candy + extraCan >= max){
+                res.add(true);
+            } else{
+                res.add(false);
+            }
+        }
+        return res;
+    }
+    
+    // GCD String
+    public static String gcdStr(String str1, String str2){
+        if(!(str1+str2).equals(str2+str1)) return "";
+        int lengcd = gcd(str1.length(), str2.length());
+        return str1.substring(0,lengcd);
+    }
+    public static int gcd(int len1, int len2){
+        while(len2 != 0){
+            int temp = len1 % len2;
+            len1 = len2;
+            len2 = temp;
+        }
+        return len1;
+    }
+    // merge String alternatively
+    public static String altStr(String str1, String str2){
+        StringBuilder res = new StringBuilder();
+        int i = 0;
+        while(i<str1.length() && i < str2.length()){
+            if(i< str1.length()){
+                res.append(str1.charAt(i));
+            }
+            if(i<str2.length()){
+                res.append(str2.charAt(i));
+        }
+        i++;
+        }
+        return res.toString();
+    }
+    public static void main(String args[]){
+        int arr[] = {1,2,3,4};
+        System.out.print(Arrays.toString(arrPro(arr)));
+        System.out.println();
+        System.out.println(reverseWord("i am a software engineer at Google"));
+        System.out.println();
+        System.out.println(strvowel("IceCreAm"));
+        System.out.println();
+        int flowr[] = {1,0,0,0,1};
+        System.out.println(flowerBed(flowr, 1));
+        System.out.println();
+        int candy[] = {2,3,4,5,3};
+        List<Boolean> res = Ecandies(candy, 3);
+        System.out.println(res);
+        String str1 = "ABCABC";
+        String str3 = "ABC";
+        String str2 = "ABC";
+        String str4 = "MNC";
+        System.out.println(gcdStr(str1, str2));
+        System.out.println();
+        System.out.println(altStr(str3, str4));
+    }
+}
