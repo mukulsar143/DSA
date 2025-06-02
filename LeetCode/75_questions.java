@@ -149,7 +149,7 @@ class LeetCode {
         System.out.println();
         int arrp[] = {1, 2, 3, 4};
 
-        System.out.print(arrPro(arrp));
+        System.out.print(Arrays.toString(arrPro(arrp)));
 
     }
 }
