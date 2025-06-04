@@ -1,118 +1,176 @@
-// OBJECT
+class Oops {
+    public static void main(String args[]){
+        Pen p = new Pen();
+        p.color = "Black";
+        p.type = "Ball";
+        p.printColor();
+        Pen p2 = new Pen(p);
+        p2.printColor();
+        
+        Student s = new Student();
+        s.info("Mukul");
+        s.info(22);
+        s.info("Mukul", 22);
+        
+        
+        Account a = new Account();
+        a.name = "Google";
+        a.email = "google@gmail.com";
+        // a.setPassword("1234");
+        System.out.println(a.getPassword());
+        
+        
+        Horse h = new Horse();
+        h.walk();
+        h.eats();
 
-// ORIENTED PROGRAMMING SYSTEMS
-// JAVA
-// Object-Oriented Programming is a methodology or paradigm to design a program using classes and objects. It simplifies the software development and maintenance by providing some concepts defined below : 
-// Class is a user-defined data type which defines its properties and its functions. Class is the only logical representation of the data. For example, Human being is a class
-//   . The body parts of a human being are its properties, and the actions performed by the body parts are known as functions. The class does 
-// not occupy any memory space till the time an object is instantiated. 
-// Object is a run-time entity. It is an instance of the class
-//   . An object can represent a person, place or any other item. An object can operate on both data members and member functions. 
-class OOPs {
-
-    public static void main(String args[]) {
-        Student s1 = new Student();
-        s1.name = "Mukul Sarker";
-        s1.age = 22;
-        s1.printinfo();
-
-        // Student s2 = new Student("Mukul Sarker", 24);
-        // s2.printinfo();
-        Student s3 = new Student(s1);
-        s3.printinfo();
-
-        MNC c = new MNC();
-        c.salaryStructure("Google", 4500000);
-
-        Shape s = new Shape();
-        s.area();
-
-        Triangle t = new Triangle();
-        t.area();
-
-        Circle c1 = new Circle();
-        c1.area();
-
+        
+        // Animal an = new Animal();
+        // an.walk();
+        
+        Elephant e = new Elephant();
+        e.walk();
+        
+        
+        Students.school = "CMS";
+        Students st = new Students();
+        st.name = "Mukul Sarkar";
+        System.out.println(Students.school);
     }
 }
 
-class Student {
-
-    String name;
-    int age;
-
-    public void printinfo() {
-        System.out.println("My name is " + this.name);
-        System.out.println("My age is " + this.age);
+class Pen {
+    String color;
+    String type;
+    
+    public void printColor(){
+        System.out.println(this.color);
+        System.out.println(this.type);
     }
-
-    // Non-Parameterized constructor : A constructor which has no argument is known as non-parameterized constructor(or no
-    //      -argument constructor). It is invoked at the time of creating an object. If we don’t create one then it is created by default by Java.
-    Student() {
-        System.out.println("COnstructor called");
+    Pen(){
+        System.out.println("Called");
     }
-
-    // 2. Parameterized constructor : Constructor which has parameters is called a parameterized constructor. It is used to provide 
-    // different values to distinct objects. 
-    // Student(String name, int age) {
-    //     this.name = name;
-    //     this.age = age;
-    // }
-    // 3. Copy Constructor : A Copy constructor is an overloaded 
-    // constructor used to declare and initialize an object from another 
-    Student(Student s3) {
-        this.name = s3.name;
-        this.age = s3.age;
+    Pen(Pen p2){
+        System.out.println("Constructor Called");
+        this.color = p2.color;
+        this.type = p2.type;
     }
+    
 
 }
 
 // Polymorphism
-// Polymorphism 
-// Polymorphism is the ability to present the same interface for differing underlying forms (data types). With polymorphism, each of these classes will have different underlying data. Precisely, Poly means ‘many’ and morphism means ‘forms’. 
-// Types of Polymorphism IMP 
-// 1. Compile Time Polymorphism (Static) 
-// 2. Runtime Polymorphism (Dynamic) 
-// Let’s understand them one by one : 
-// Compile Time Polymorphism : The polymorphism which is implemented at the compile time is known as compile-time polymorphism. Example - Method Overloading 
-// Method Overloading : Method overloading is a technique which allows you to have more than one function with the same function name but with different functionality. Method overloading can be possible on the following basis: 
-class MNC {
-
+class Student {
     String name;
-    int salary;
-
-    public void salaryStructure(String name) {
+    int age;
+    
+    public void info(String name){
         System.out.println(name);
     }
-
-    public void salaryStructure(int salary) {
-        System.out.println(salary);
+    public void info(int age){
+        System.out.println(age);
     }
-
-    public void salaryStructure(String name, int salary) {
-        System.out.println("Company name " + name);
-        System.out.println("Company salary " + salary);
+    public void info(String name, int age){
+        System.out.println("name: "+name);
+        System.out.println("age: "+age);
     }
 }
 
-// Runtime Polymorphism : Runtime polymorphism is also known as dynamic polymorphism. Function overriding is an example of runtime polymorphism. Function overriding means when the child class contains the method which is already present in the parent class. Hence, the child class overrides the method of the parent class. In case of function overriding, parent and child classes both contain the same function with a different definition. The call to the function is determined at runtime is known as runtime polymorphism.
-class Shape {
+// Inheritence
 
-    public void area() {
-        System.out.println("Displays Area of Shape");
+class Shape {
+    public void area(){
+        System.out.println("Display Area");
     }
 }
 
 class Triangle extends Shape {
-
-    public void area(int h, int b) {
-        System.out.println((1 / 2 * b * h));
+    public void area(int l, int h){
+        System.out.println((1/2)*l*h);
     }
 }
 
-class Circle extends Shape {
+class EqaalatedTriangle extends Triangle{
+    public void area(int l, int j){
+         System.out.println((1/2)*l*j);
+    }
+}
+class Circle extends Shape{
+    public void area(int r){
+        System.out.print((3.14)*r*r);
+    }
+}
 
-    public void area(int r) {
-        System.out.println((3.14) * r * r);
+// Encapsulation
+class Account {
+    public String name;
+    protected String email;
+    private String password;
+    
+    
+    // getter & setters
+    
+    public String getPassword(){
+        setPassword("1234");
+        return this.password;
+    }
+    
+    private void setPassword(String pass){
+        this.password = pass;
+    }
+}
+
+// Abstraction
+
+abstract class Animal{
+    Animal(){
+        System.out.println("New Animal Creating");
+    }
+    abstract void walk();
+    public void eats(){
+        System.out.println("Animals eats");
+    }
+}
+
+class Horse extends Animal{
+    Horse(){
+        System.out.println("Creating Horse");
+    }
+    public void walk(){
+        System.out.println("Walk on 4 legs");
+    }
+}
+
+class Chicken extends Animal {
+    public void walk(){
+        System.out.println("Walk on 2 legs");
+    }
+}
+
+// Interfaces
+
+
+interface Animal2 {
+    void walk();
+}
+
+interface BlackPanther {
+    
+}
+
+class Elephant implements Animal2, BlackPanther{
+    public void walk(){
+        System.out.println("Elephants are huge");
+    }
+}
+
+// Static
+
+class Students {
+    String name;
+    static String school;
+    
+    public static void changeSchool(){
+        school = "DPS";
     }
 }
