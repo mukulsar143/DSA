@@ -48,21 +48,21 @@
 // }
 // class ReplaceChar {
 //     public static void main(String[] args) {
-//         Scanner sc = new Scanner(System.in);
-//         String str = sc.next();
-//         char tstr = sc.next().charAt(0);
-//         char rstr = sc.next().charAt(0);
-//         String result = "";
-//         for (int i = 0; i < str.length(); i++) {
-//             if(str.charAt(i) == tstr) {
-//                 result += rstr;
-//             }
-//             else {
-//                 result += str.charAt(i);
-//             }
-//         }
-//         System.out.println(result);
-//     }
+    //     Scanner sc = new Scanner(System.in);
+    //     String str = sc.next();
+    //     char tstr = sc.next().charAt(0);
+    //     char rstr = sc.next().charAt(0);
+    //     String result = "";
+    //     for (int i = 0; i < str.length(); i++) {
+    //         if(str.charAt(i) == tstr) {
+    //             result += rstr;
+    //         }
+    //         else {
+    //             result += str.charAt(i);
+    //         }
+    //     }
+    //     System.out.println(result);
+    // }
 // }
 // class CreateEmailViaUsername {
 //     public static void main(String[] args) {
